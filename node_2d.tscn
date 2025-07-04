@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfxf5xf6m0hlj"]
+
+[ext_resource type="Material" uid="uid://c4tfk6vmsdov0" path="res://shaders/test.tres" id="1_wtcfe"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = ExtResource("1_wtcfe")
+offset_right = 40.0
+offset_bottom = 40.0
