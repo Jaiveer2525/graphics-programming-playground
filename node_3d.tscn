@@ -3,8 +3,8 @@
 [ext_resource type="Material" uid="uid://dtj31bo8jhbpl" path="res://shaders/test-3d.tres" id="1_a202f"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_a202f"]
-subdivide_width = 64
-subdivide_depth = 64
+subdivide_width = 32
+subdivide_depth = 32
 
 [node name="Node3D" type="Node3D"]
 

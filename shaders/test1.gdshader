@@ -1,25 +1,29 @@
 shader_type canvas_item;
 
-void vertex() {
-	//float t1 = sin(TIME * 2.0 + UV.y * 4.0);
-	//float t2 = cos(TIME * 1.5 + UV.x * 3.0);
-	//vec2 vertex = VERTEX;
-	//vertex.x += (UV.y) * t1 * 8.0;
-	//vertex.y += (UV.y) * t2 * 4.0;
-	//VERTEX = vertex;
+vec2 complex_mul(vec2 a, vec2 b) {
+    return vec2(
+        a.x * b.x - a.y * b.y,
+        a.x * b.y + a.y * b.x
+    );
 }
 
-uniform vec4 water_color : source_color = vec4(0.2, 0.6, 1.0, 1.0); // light blue
-uniform vec3 white = vec3(1,1,1);
-uniform float speed = 15.0;
-uniform float density = 30.0;
+vec2 rotate_point(vec2 point, vec2 center, float angle) {
+    vec2 relative = point - center;
+    vec2 rotation = vec2(cos(angle), sin(angle)); // e^(iθ)
+    vec2 rotated = complex_mul(relative, rotation);
+    return rotated + center;
+}
+
+
+void vertex() {
+	float r = VERTEX.x;
+	float i = VERTEX.y;
+	vec2 z = vec2(r, i);
+	VERTEX = rotate_point(z, vec2(20, 20), fract(TIME) * 3.14);
+}
 
 void fragment() {
-	// Called for every pixel the material is visible on.
-	float wave =  sin(SCREEN_UV.y * density + -TIME * speed) -1.5 ;
-	float shade = 1.0 + (wave); // 0.6 to 1.0
-	vec3 final_color = mix((water_color.rgb), white, shade);
-	COLOR = vec4(final_color, 1.0);
+	COLOR = vec4(0.2 , 0.6 , 0.8 , 1.0);
 }
 
 //void light() {
