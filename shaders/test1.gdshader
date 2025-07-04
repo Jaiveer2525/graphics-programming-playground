@@ -10,15 +10,15 @@ void vertex() {
 }
 
 uniform vec4 water_color : source_color = vec4(0.2, 0.6, 1.0, 1.0); // light blue
-uniform float shimmer_speed = 20.0;
-uniform float shimmer_density = 12.0;
-uniform float shimmer_intensity = 0.3;
+uniform vec3 white = vec3(1,1,1);
+uniform float speed = 15.0;
+uniform float density = 30.0;
 
 void fragment() {
 	// Called for every pixel the material is visible on.
-	float wave = sin(UV.y * shimmer_density + -TIME * shimmer_speed);
-	float shade = 1.0 - shimmer_intensity + (wave * shimmer_intensity); // 0.6 to 1.0
-	vec3 final_color = water_color.rgb * shade;
+	float wave =  sin(SCREEN_UV.y * density + -TIME * speed) -1.5 ;
+	float shade = 1.0 + (wave); // 0.6 to 1.0
+	vec3 final_color = mix((water_color.rgb), white, shade);
 	COLOR = vec4(final_color, 1.0);
 }
 

@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dtj31bo8jhbpl"]
+
+[ext_resource type="Shader" path="res://shaders/test-3d.gdshader" id="1_enlpa"]
+[ext_resource type="Texture2D" uid="uid://g1wjxonllue5" path="res://shaders/new_noise_texture_2d.tres" id="2_gu6al"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_enlpa")
+shader_parameter/wave_strength = 0.3
+shader_parameter/wave_frequency = 1.0
+shader_parameter/time_speed = 1.0
+shader_parameter/t = 0.0
+shader_parameter/water_color = Color(0.109804, 0.309804, 1, 1)
+shader_parameter/white = Color(1, 1, 1, 1)
+shader_parameter/noise_tex = ExtResource("2_gu6al")

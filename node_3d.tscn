@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dritoi64yiyuf"]
+
+[ext_resource type="Material" uid="uid://dtj31bo8jhbpl" path="res://shaders/test-3d.tres" id="1_a202f"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a202f"]
+subdivide_width = 64
+subdivide_depth = 64
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_a202f")
+mesh = SubResource("PlaneMesh_a202f")
